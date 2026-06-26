@@ -1,3 +1,4 @@
+```gitignore
 # Python
 __pycache__/
 *.py[cod]
@@ -33,7 +34,7 @@ Thumbs.db
 # Static collected files
 staticfiles/
 
-# Media (در صورت نیاز)
+# Media
 media/
 
 # Coverage
@@ -55,3 +56,4 @@ dist/
 
 # Python package
 *.egg-info/
+```
