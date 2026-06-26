@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title  %}
+جزئیات مربی
+{% endblock %}
+
+{% block page_content %}
+
+     <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>مشخصات مربی</h1>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li>/ جزئیات مربی</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="template_agent section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="single_agent">
+                        <div class="single_agent_image"><img src="{{ instructor.avatar.url }}" class="img-fluid" alt={{ instructor.full_name }}>
+                        </div>
+                        <div class="single_agent_content">
+                                  <h4>{{ instructor.full_name }}</h4>
+                            <h5> {{ instructor.title }}</h5>
+                            <p> {{ instructor.bio }}</p>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                                    {{ instructor.email }}
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i> {{ instructor.phone }}
+                                </li>
+                                <li>
+                                    <i class="fa fa-plane"></i>                {{ instructor.site_address }}
+                                </li>
+                                <li>
+                                    <i class="fa fa-skype"></i>                {{ instructor.skype_address }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="agent_social">
+<ul class="list-inline">
+
+            {% if instructor.facebook %}
+                <li>
+                    <a href="{{ instructor.facebook }}">
+                        <img src="{% static 'img/fb.svg' %}" alt="">
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if instructor.twitter %}
+                <li>
+                    <a href="{{ instructor.twitter }}">
+                        <img src="{% static 'img/tw.svg' %}" alt="">
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if instructor.pintrest %}
+                <li>
+                    <a href="{{ instructor.pintrest }}">
+                        <img src="{% static 'img/pn.svg' %}" alt="">
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if instructor.instagram %}
+                <li>
+                    <a href="{{ instructor.instagram }}">
+                        <img src="{% static 'img/ins.svg' %}" alt="">
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

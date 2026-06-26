@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}
+لیست مربیان
+{% endblock %}
+
+{% block page_content %}
+
+     <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>مربی ما</h1>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li>/ مربی ها</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="team_area section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>با مربیان ما آشنا شوید</h2>
+                <p>ما یک رویکرد کاملاً جدید برای اساسی ترین پارادایم های یادگیری ارائه می دهیم. از میان طیف گسترده ای از
+                    گزینه های یادگیری انتخاب کنید و مهارت های جدیدی به دست آورید! مدرسه ما معلوم است</p>
+            </div>
+            <div class="row">
+                {% for instructor in instructors %}
+                    {% include 'courses_modules/includes/instructor_box.html' %}
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static %}
+{% load render_partial %}
+
+
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Eduleb - Education HTML Template">
+    <meta name="keywords"
+        content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">
+    <title>
+        {% block page_title %}
+        {% endblock %}
+    </title>
+
+   {% include 'header_refrence.html' %}
+
+
+</head>
+
+
+<body data-spy="scroll" data-offset="80">
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="preloaders"><span class="loader"></span></div>
+    {% render_partial 'home_modules.views.site_header' %}
+
+  {% block page_content %}
+
+{% endblock %}
+
+    {% render_partial 'home_modules.views.site_footer' %}
+
+
+    {% include 'footer_refrence.html' %}
+
+
+
+
+</body>
+
+</html>

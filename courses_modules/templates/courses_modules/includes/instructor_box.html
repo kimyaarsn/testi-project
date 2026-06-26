@@ -1,0 +1,36 @@
+{% load static %}
+<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"
+                    data-wow-offset="0">
+                    <div class="our-team">
+                        <div class="team-content">
+                            <a href="{{ instructor.get_absolute_url }}"><img src="{{ instructor.avatar.url }}" alt="{{ instructor.full_name }}" style="width:100%; height:220px; object-fit:cover;"></a>
+                            <ul class="social-links">
+                                {% if instructor.twitter %}
+                    <li>
+                        <a href="{{ instructor.twitter }}" class="ti-twitter"></a>
+                    </li>
+                {% endif %}
+
+                {% if instructor.instagram %}
+                    <li>
+                        <a href="{{ instructor.instagram }}" class="ti-instagram"></a>
+                    </li>
+                {% endif %}
+
+                {% if instructor.facebook %}
+                    <li>
+                        <a href="{{ instructor.facebook }}" class="ti-facebook"></a>
+                    </li>
+                {% endif %}
+
+                            </ul>
+                        </div>
+                        <div class="team-prof">
+                            <h3>{{ instructor.full_name }}</h3>
+                            <span> {{ instructor.title }}</span>
+                        </div>
+                        <div class="sth_det2">
+                            <span class="ti-file"><u>{{ instructor.courses.count }} دوره</u></span><span class="ti-user"><u>{{ instructor.total_students|default:0 }} دانشجو</u></span>
+                        </div>
+                    </div>
+                </div>

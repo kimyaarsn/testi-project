@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+
+{% block page_title %}
+لیست دوره ها
+{% endblock %}
+
+{% block page_content %}
+
+     <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>همه دوره</h1>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li>/ دروس</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home_course section-padding">
+        <div class="container">
+            <div class="row">
+                 {% for course in courses %}
+                     {% include 'courses_modules/includes/course_box.html' %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+{% load poll_extras %}
+
+<div class="related_course">
+                        <h3>دوره مرتبط</h3>
+        {% for related_course in course.suggested_courses.all %}
+                        <div class="single_rc">
+                            <div class="rc_img"><img src="{{ related_course.image.url }}" alt="{{ related_course.title }}"></div>
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i>
+                            <h4><a href="{{ related_course.get_absolute_url }}">{{ related_course.title }}</a></h4>
+                            <span>{{ related_course.price|three_digits_currency }}</span>
+                        </div>
+            {% empty %}
+
+        <p>دوره مرتبطی وجود ندارد.</p>
+        {% endfor %}
+
+</div>

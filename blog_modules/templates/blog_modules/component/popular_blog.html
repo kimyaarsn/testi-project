@@ -1,0 +1,20 @@
+                    <div class="sidebar-post">
+                        <div class="sidebar_title">
+                            <h4>پست محبوب</h4>
+                        </div>
+                        {% for blog in popular_blogs %}
+        <div class="single_popular">
+
+            <a href="{{ blog.get_absolute_url }}">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            </a>
+
+            <h5>
+                <a href="{{ blog.get_absolute_url }}">
+                    {{ blog.title }}
+                </a>
+            </h5>
+
+        </div>
+    {% endfor %}
+                    </div>

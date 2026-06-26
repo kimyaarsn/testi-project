@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    جزئیات مقاله
+{% endblock %}
+
+{% block page_content %}
+     <section class="section-top">
+        <div class="container">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s"
+                    data-wow-offset="0">
+                    <h1>وبلاگ تک</h1>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li>/ جزئیات وبلاگ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="blog-page section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-sm-12 col-xs-12">
+                    <div class="arti_single">
+                        <div class="arti_img_two"><img src="{{ blog.image.url }}" class="img-fluid" alt="وبلاگ image">
+                        </div>
+                        <div class="arti_content ">
+                            <p>{{ blog.short_description }}</p>
+                        </div>
+                        <div class="arti_sp">
+                            <h2>{{ blog.title }}</h2>
+                            <p> {{ blog.text }}</p>
+                        </div>
+                        <div class="share_sp">
+                            <h4>اشتراک گذاری</h4>
+                            <ul>
+                                <li><a href="#"><span class="ti-facebook"></span>فیس بوک</a></li>
+                                <li><a href="#"><span class="ti-twitter"></span>توییتر</a></li>
+                                <li><a href="#"><span class="ti-instagram"></span>اینستاگرام</a></li>
+                                <li><a href="#"><span class="ti-linkedin"></span>لینکدین</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="author_part">
+                        <h3 class="blog_head_title">درباره نویسنده</h3>
+                        <div class="single_author">
+                            <img src="{{ blog.author.image.url }}" alt="">
+                            <h4> {{ blog.author.full_name }}</h4>
+                            <p>{{ blog.author.biography }}</p>
+                        </div>
+                    </div>
+                    <div class="comments_part">
+                        <h3 class="blog_head_title">نظرات</h3>
+                        {% for comment in comments %}
+        <div class="single_comment">
+            <img src="{{ user.avatar.url }}" alt="{{ user.username }}">
+
+            <h4>
+                {% if comment.name %}
+                    {{ comment.name }}
+                {% else %}
+                    {{ comment.user }}
+                {% endif %}
+            </h4>
+
+            <p>{{ comment.text }}</p>
+
+        </div>
+    {% empty %}
+        <div class="single_comment">
+            <p>هنوز نظری برای این مقاله ثبت نشده است.</p>
+        </div>
+    {% endfor %}
+                    </div>
+<div class="comment_form">
+    <h3 class="blog_head_title">یک نظر اضافه کنید</h3>
+
+    <div class="contact comment-box">
+        <form method="post" action="{% url 'add_blog_comment' blog.id %}">
+            {% csrf_token %}
+
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    {{ comment_form.name }}
+                </div>
+
+                <div class="form-group col-md-6">
+                    {{ comment_form.email }}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {{ comment_form.title }}
+                </div>
+
+                <div class="form-group col-md-12">
+                    {{ comment_form.text }}
+                </div>
+
+                <div class="col-md-12">
+                    <div class="actions">
+                        <button type="submit"
+                                class="btn btn_one">
+                            ثبت نظر
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>                </div>
+                <div class="col-lg-5 col-sm-12 col-xs-12">
+                    {% include 'blog_modules/component/popular_blog.html' %}
+
+                    {% include 'social_link.html' %}
+                    {% include 'blog_modules/component/blog_category.html' %}
+                    {% include 'blog_modules/component/popular_tag_blog.html' %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

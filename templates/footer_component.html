@@ -1,0 +1,155 @@
+{% load static %}
+
+<div class="footer section-padding">
+    <div class="container">
+        <div class="row">
+
+            <!-- درباره سایت -->
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single_footer">
+
+                    <a href="{% url 'index' %}">
+                        <img src="{{ site_setting.site_logo.url }}" alt="{{ site_setting.site_name }}">
+                    </a>
+
+                    <p>{{ site_setting.about_us_text }}</p>
+
+                    <div class="social_profile">
+                        <ul>
+
+                            {% if site_setting.facebook_link %}
+                                <li>
+                                    <a href="{{ site_setting.facebook_link }}" class="f_facebook" target="_blank">
+                                        <i class="ti-facebook"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if site_setting.twitter_link %}
+                                <li>
+                                    <a href="{{ site_setting.twitter_link }}" class="f_twitter" target="_blank">
+                                        <i class="ti-twitter"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if site_setting.instagram_link %}
+                                <li>
+                                    <a href="{{ site_setting.instagram_link }}" class="f_instagram" target="_blank">
+                                        <i class="ti-instagram"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if site_setting.linkedin %}
+                                <li>
+                                    <a href="{{ site_setting.linkedin }}" class="f_linkedin" target="_blank">
+                                        <i class="ti-linkedin"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- لینک های فوتر -->
+            {% for box in footer_link_boxes %}
+                <div class="col-lg-2 col-sm-6 col-xs-12">
+                    <div class="single_footer">
+
+                        <h4>{{ box.title }}</h4>
+
+                        <ul>
+                            {% for link in box.links.all %}
+                                <li>
+                                    <a href="{{ link.url }}">
+                                        {{ link.title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+
+            <!-- اطلاعات تماس -->
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+                <div class="single_footer">
+
+                    <h4>اطلاعات تماس</h4>
+
+                    <div class="sf_contact">
+                        <span class="ti-map"></span>
+                        <p>{{ site_setting.address }}</p>
+                    </div>
+
+                    {% if site_setting.phone %}
+                    <div class="sf_contact">
+                        <span class="ti-mobile"></span>
+                        <p>
+                            <a href="tel:{{ site_setting.phone }}">
+                                {{ site_setting.phone }}
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="sf_contact">
+                        <span class="ti-mobile"></span>
+                        <p>
+                            <a href="https://wa.me/{{ site_setting.phone|cut:'+'|cut:' ' }}">
+                                تماس با واتساپ
+                            </a>
+                        </p>
+                    </div>
+                    {% endif %}
+
+                    {% if site_setting.email %}
+                    <div class="sf_contact">
+                        <span class="ti-email"></span>
+                        <p>
+                            <a href="mailto:{{ site_setting.email }}">
+                                {{ site_setting.email }}
+                            </a>
+                        </p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+            <!-- دانلود اپ -->
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+                <div class="single_footer">
+
+                    <h4>دانلود برنامه</h4>
+
+                    <p>
+                        برنامه ما را از فروشگاه Google Play و App Store دانلود کنید.
+                    </p>
+
+                    <a href="#">
+                        <img src="{% static 'assets/img/google-play.jpg' %}" class="foot_img" alt="">
+                    </a>
+
+                    <a href="#">
+                        <img src="{% static 'assets/img/app-store.jpg' %}" class="foot_img" alt="">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="foot_copy">
+        <div class="footer_copyright">
+            <p>{{ site_setting.copy_right }}</p>
+        </div>
+    </div>

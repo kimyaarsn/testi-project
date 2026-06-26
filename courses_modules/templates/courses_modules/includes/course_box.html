@@ -1,0 +1,42 @@
+{% load static %}
+{% load poll_extras %}
+<div class="col-lg-4 col-sm-6 col-xs-12">
+    <div class="single_course">
+
+        <div class="single_c_img"  >
+            <img src="{{ course.image.url }}" class="img-fluid" alt="{{ course.title }}"  style="width:100%; height:220px; object-fit:cover;">
+
+            {% if course.category %}
+                <span>{{ course.category.title }}</span>
+            {% endif %}
+        </div>
+
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+
+        <h4>
+            <a href="{{ course.get_absolute_url }}">
+                {{ course.title }}
+            </a>
+        </h4>
+
+        <p>
+            <span class="ti-book"></span>
+            {{ course.lecture_count }} جلسه
+        </p>
+
+        <p>
+            <span class="ti-alarm-clock"></span>
+            {{ course.duration_days }} روز
+        </p>
+
+        <div class="price">
+            هزینه دوره -
+            {{ course.price|three_digits_currency }}
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{% load static %}
+
+    <div id="navigation" class="navbar-light bg-faded site-navigation navigation2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-20 align-self-center">
+                    <div class="site-logo"><a href="index.html"><img src="{{ site_setting.site_logo.url }}" alt=""></a></div>
+                </div>
+                <div class="col-60 d-flex">
+                    <nav id="main-menu">
+                        <ul>
+                            <li><a href="{% url 'index' %}">صفحه اصلی</a></li>
+                            <li><a href="{% url 'course_list' %}">لیست دوره ها</a></li>
+                            <li><a href="{% url 'blog_list' %}">وبلاگ</a></li>
+                            <li><a href="{% url 'contact_page' %}">ارتباط با ما</a></li>
+                            <li><a href="{% url 'about' %}">درباره ما</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-20 d-none d-xl-block text-end align-self-center">
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <a href="/admin/">پنل مدیریت ادمین</a>
+                    {% else %}
+                    <a href="#">{{ user.username }} </a>
+                        <a href="{% url 'logout' %}">خروج از حساب</a>
+                         {% endif %}
+                    {% else %}
+                    <a href="{% url 'login' %}" class="header-btn">ورود</a>
+                    <a href="{% url 'signup' %}" class="btn_one">ثبت نام</a>
+                    {% endif %}
+                </div>
+                <ul class="mobile_menu">
+                    <li><a href="{% url 'index' %}">صفحه اصلی</a></li>
+                            <li><a href="{% url 'about' %}">درباره</a></li>
+                            <li><a href="{% url 'course_list' %}">لیست دوره ها</a></li>
+                            <li><a href="{% url 'blog_list' %}">وبلاگ</a></li>
+                            <li><a href="{% url 'contact_page' %}">ارتباط با ما</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>

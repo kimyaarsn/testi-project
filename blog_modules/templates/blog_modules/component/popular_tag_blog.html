@@ -1,0 +1,15 @@
+<div class="sidebar-post">
+    <div class="tag">
+
+        <div class="sidebar_title">
+            <h4>برچسب محبوب</h4>
+        </div>
+
+        {% for tag in popular_tags %}
+            <a href="#">
+                {{ tag.caption }}
+            </a>
+        {% endfor %}
+
+    </div>
+</div>

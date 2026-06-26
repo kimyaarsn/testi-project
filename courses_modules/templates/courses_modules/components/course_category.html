@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="sidebar-post">
+                        <div class="sidebar_title">
+                            <h4>دسته بندی ها</h4>
+                        </div>
+                        <div class="single_category">
+                            <ul>
+                                {% for category in categories%}
+                                    <li><a href="#">{{ category.title }}<sup>{{ category.courses.count }}</sup></a></li>
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
