@@ -12,8 +12,6 @@ env/
 # Environment variables
 .env
 
-# SQLite
-db.sqlite3
 
 # Logs
 *.log
